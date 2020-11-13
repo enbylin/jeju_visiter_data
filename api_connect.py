@@ -15,7 +15,7 @@ def contents_connet(value):
     df = pd.DataFrame(data=json_temp['data'])
     name = df['poi'][0]
     code = df['confirmId'][0]
-    return name, code
+    return code
 
 VISITOR_URL = 'https://gw.jejudatahub.net/api/proxy/f0663087dbb211e79252394919cf6a6f/'
 
@@ -49,7 +49,7 @@ def visitor_gender(code):
 if __name__ == "__main__":    
     
     poi = '천지연폭포'
-    poi_name, poi_code = contents_connet(poi)
+    poi_code = contents_connet(poi)
 
     print(visitor_age(poi_code))
     print(visitor_cnt(poi_code))
