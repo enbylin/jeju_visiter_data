@@ -32,9 +32,9 @@ def visitor_cnt(code):
     json_temp = json_read(url)
     df_cnt = pd.DataFrame(data=json_temp['data'][0]['day'])
     df_cnt = df_cnt[['labels', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']]
-    df_cnt = df_cnt.rename(columns=({'labels':'시간대'}))
+    df_cnt = df_cnt.rename(columns=({'labels':'시간대', 'monday':'월요일', 'tuesday':'화요일', 'wednesday':'수요일', 'thursday':'목요일', 'friday':'금요일', 'saturday':'토요일', 'sunday':'일요일'}))
     
-    df_cnt_temp = df_cnt[['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']]
+    df_cnt_temp = df_cnt[['월요일', '화요일', '수요일', '목요일', '금요일', '토요일', '일요일']]
     
     df_cnt_temp_a = pd.DataFrame()
     df_cnt_temp_b = pd.DataFrame()
@@ -44,7 +44,7 @@ def visitor_cnt(code):
         df_cnt_temp_a['요일'] = col
         df_cnt_temp_a['시간대'] = df_cnt['시간대']    
 
-        if col == 'monday':           
+        if col == '월요일':           
             df_cnt_temp_b = pd.concat([df_cnt_temp_b, df_cnt_temp_a], axis=1)
         else:                   
             df_cnt_temp_b = pd.concat([df_cnt_temp_b, df_cnt_temp_a])
