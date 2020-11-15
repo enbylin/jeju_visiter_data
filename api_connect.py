@@ -13,7 +13,6 @@ def contents_connet(value):
     url = f'https://gw.jejudatahub.net/api/proxy/19a83f9fdb2c11e79252394919cf6a6f/{api_key}?poi={value}'
     json_temp = json_read(url)
     df = pd.DataFrame(data=json_temp['data'])
-    name = df['poi'][0]
     code = df['confirmId'][0]
     return code
 
