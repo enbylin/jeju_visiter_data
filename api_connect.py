@@ -33,7 +33,25 @@ def visitor_cnt(code):
     df_cnt = pd.DataFrame(data=json_temp['data'][0]['day'])
     df_cnt = df_cnt[['labels', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']]
     df_cnt = df_cnt.rename(columns=({'labels':'시간대'}))
-    return df_cnt
+    
+    df_cnt_temp = df_cnt[['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']]
+    
+    df_cnt_temp_a = pd.DataFrame()
+    df_cnt_temp_b = pd.DataFrame()
+    
+    for col in df_cnt_temp.columns:
+        df_cnt_temp_a['인기도수치'] = df_cnt_temp[col]
+        df_cnt_temp_a['요일'] = col
+        df_cnt_temp_a['시간대'] = df_cnt['시간대']    
+
+        if col == 'monday':           
+            df_cnt_temp_b = pd.concat([df_cnt_temp_b, df_cnt_temp_a], axis=1)
+        else:                   
+            df_cnt_temp_b = pd.concat([df_cnt_temp_b, df_cnt_temp_a])
+    
+    df_cnt_temp_b = df_cnt_temp_b[['시간대', '요일', '인기도수치']]
+
+    return df_cnt_temp_b
 
 
 def visitor_gender(code):
@@ -49,7 +67,9 @@ if __name__ == "__main__":
     
     poi = '천지연폭포'
     poi_code = contents_connet(poi)
-
-    print(visitor_age(poi_code))
+    
     print(visitor_cnt(poi_code))
-    print(visitor_gender(poi_code))
+
+  
+
+    
