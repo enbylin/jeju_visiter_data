@@ -130,3 +130,6 @@ dmypy.json
 
 # api key
 api.py
+
+# vscode forder
+.vscode/
