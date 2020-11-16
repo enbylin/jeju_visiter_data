@@ -3,23 +3,27 @@
     <title>Enbylin_Data_Web_Display_Project</title>
     <style>
         #title {display: block; text-align: center;}
+        #sub_title {display: block; text-align: center;}
+        #input_div {display: block; text-align: center;}
         #input_name {display: inline; vertical-align:middle; margin-bottom : 2px;}
+        #chart {display: block; text-align: center;}
     </style>
 </head>
 <body>   
    <h1 id='title'>Enbylin Project No1</h1>
    
-   <div>
+   <div id='input_div'>
     <form method="GET" action="/text_trans">
-        <label for="local">지역명:</label><br>
+        <label for="local">지역명:</label>
         <input type="text" id="input_name" name="local">
         <button type="submit" value="submit">조회</button>
     </form>
    </div>
-   <div>
-       <p>
-           {{local}}
-       </p>
+   <div>       
+        <h2 id='sub_title'>{{local}} 방문객 데이터</h2>
+        <div id='chart'>
+            <iframe width="1400" height="1050" src="https://datastudio.google.com/embed/reporting/4cee4067-1157-4295-84ff-c82bf5831ff2/page/UrtoB" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
    </div>
 </body>
 <footer></footer>

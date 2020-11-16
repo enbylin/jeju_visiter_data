@@ -65,25 +65,25 @@ def visitor_gender(code):
     return df_gender
 
 
-def visitor_keyword():
-    df = pd.DataFrame()
+# def visitor_keyword():
+#     df = pd.DataFrame()
     
-    for sunday in sunday_list:
-        url = f'https://gw.jejudatahub.net/api/proxy/39b8d232dbb011e79252394919cf6a6f/{api_key}?{sunday}&type=visit'
-        json_temp = json_read(url)
-        df_temp = pd.DataFrame(data=json_temp['data'])
-        df_temp = df_temp[['ranking', 'keyword']]
-        if sunday == '2017-01-01':
-            df = pd.concat([df, df_temp], axis=1)
-        else:
-            df = pd.concat([df, df_temp])
+#     for sunday in sunday_list:
+#         url = f'https://gw.jejudatahub.net/api/proxy/39b8d232dbb011e79252394919cf6a6f/{api_key}?{sunday}&type=visit'
+#         json_temp = json_read(url)
+#         df_temp = pd.DataFrame(data=json_temp['data'])
+#         df_temp = df_temp[['ranking', 'keyword']]
+#         if sunday == '2017-01-01':
+#             df = pd.concat([df, df_temp], axis=1)
+#         else:
+#             df = pd.concat([df, df_temp])
     
-    df = df.apply(ranking_score, axis=1)
-    df = df.groupby(by='keyword')['rank_score'].sum()
-    print(df)
-    df = df.reset_index()
-    df = df.sort_values(by='rank_score', ascending=False)
-    return df
+#     df = df.apply(ranking_score, axis=1)
+#     df = df.groupby(by='keyword')['rank_score'].sum()
+#     print(df)
+#     df = df.reset_index()
+#     df = df.sort_values(by='rank_score', ascending=False)
+#     return df
 
 
 if __name__ == "__main__":    
@@ -91,6 +91,6 @@ if __name__ == "__main__":
     poi = '천지연폭포'
     poi_code = contents_connet(poi)
     
-    visitor_keyword()
+    # visitor_keyword()
 
     

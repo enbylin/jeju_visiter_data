@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, url_for
+from sp_connect import data_update
 
 app = Flask(__name__)
 
@@ -9,12 +10,12 @@ def main_get():
 @app.route('/text_trans', methods=['POST', 'GET'])
 def text_trans():
     if request.method == 'POST':
-        temp = request.form['local']
+        local_name = request.form['local']
     elif request.method == 'GET':
-        temp = request.args.get('local')
-        temp = temp + '지역 데이터 보여주기'
+        local_name = request.args.get('local')
+        data_update(local_name)
     
-    return render_template('index.html', local=temp)
+    return render_template('index.html', local=local_name)
 
 
 if __name__ == '__main__':
