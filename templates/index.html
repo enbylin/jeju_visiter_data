@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+    <title>Enbylin_Data_Web_Display_Project</title>
+    <style>
+        #title {display: block; text-align: center;}
+        #input_name {display: inline; vertical-align:middle; margin-bottom : 2px;}
+    </style>
+</head>
+<body>   
+   <h1 id='title'>Enbylin Project No1</h1>
+   
+   <div>
+    <form method="GET" action="/text_trans">
+        <label for="local">지역명:</label><br>
+        <input type="text" id="input_name" name="local">
+        <button type="submit" value="submit">조회</button>
+    </form>
+   </div>
+   <div>
+       <p>
+           {{local}}
+       </p>
+   </div>
+</body>
+<footer></footer>
