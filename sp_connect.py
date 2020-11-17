@@ -22,6 +22,7 @@ def data_update(local_name):
     tab1_sheet = sps.worksheet("tab1")  
     tab2_sheet = sps.worksheet("tab2")
     tab3_sheet = sps.worksheet("tab3")
+    #tab4_sheet = sps.worksheet("tab4")
 
     ### 업데이트 영역 ###
 
@@ -35,7 +36,8 @@ def data_update(local_name):
 
         age_df = ac.visitor_age(poi_code)
         cnt_df = ac.visitor_cnt(poi_code)
-        gender_df = ac.visitor_gender(poi_code)    
+        gender_df = ac.visitor_gender(poi_code)
+        #keyword_df = ac.visitor_keyword()
 
         def sheet_update(sheet_obj, df):
             sheet_obj.update([df.columns.values.tolist()] + df.values.tolist())
@@ -43,8 +45,12 @@ def data_update(local_name):
         sheet_update(tab1_sheet, age_df)
         sheet_update(tab2_sheet, cnt_df)
         sheet_update(tab3_sheet, gender_df)
+        #sheet_update(tab4_sheet, keyword_df)
 
     except:
         # 셀 업데이트
         tab_info_sheet.update_acell("A4", "없는 지역명입니다. 다시 입력해주세요")
 
+
+
+#data_update('만장굴')
