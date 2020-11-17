@@ -7,8 +7,8 @@ app = Flask(__name__)
 def main_get():
     return render_template('index.html')
 
-@app.route('/text_trans', methods=['POST', 'GET'])
-def text_trans():
+@app.route('/local_input', methods=['POST', 'GET'])
+def local_input():
     if request.method == 'POST':
         local_name = request.form['local']
     elif request.method == 'GET':
